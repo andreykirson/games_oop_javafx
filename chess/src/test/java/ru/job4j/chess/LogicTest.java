@@ -9,7 +9,6 @@ import static org.junit.Assert.*;
 
 public class LogicTest {
 
-    @Ignore
     @Test
     public void move() {
         Logic logic = new Logic();

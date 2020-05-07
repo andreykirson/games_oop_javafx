@@ -17,8 +17,7 @@ public class Logic {
     private final Figure[] figures = new Figure[32];
     private int index = 0;
 
-    public void add(Figure figure) {
-        this.figures[this.index++] = figure;
+    public void add(Figure figure) {this.figures[this.index++] = figure;
     }
 
     public boolean move(Cell source, Cell dest) {
@@ -26,11 +25,20 @@ public class Logic {
         int index = this.findBy(source);
         if (index != -1) {
             Cell[] steps = this.figures[index].way(source, dest);
-            if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
-                rst = true;
-                this.figures[index] = this.figures[index].copy(dest);
+            if (steps.length > 0 && steps[steps.length - 1].equals(dest)){
+                outerloop:
+                for (int j = 0; j < figures.length; j++) {
+                 for(int i = 1; i < steps.length; i++){
+                     if(steps[i] == this.figures[j].position()){
+                         rst = false;
+                         break outerloop;
+                     }
+                     rst = true;
+                 }
+             }
+             this.figures[index] = this.figures[index].copy(dest);
             }
-        }
+    }
         return rst;
     }
 
