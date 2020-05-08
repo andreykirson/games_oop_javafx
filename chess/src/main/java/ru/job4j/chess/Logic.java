@@ -2,6 +2,7 @@ package ru.job4j.chess;
 
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
+import ru.job4j.chess.firuges.black.BishopBlack;
 
 import java.util.Arrays;
 import java.util.Optional;
@@ -20,6 +21,13 @@ public class Logic {
     public void add(Figure figure) {this.figures[this.index++] = figure;
     }
 
+    public static void main(String[] args) {
+        Logic logic = new Logic();
+        logic.add(new BishopBlack(Cell.C1));
+        System.out.println(logic.figures[0]);
+    }
+
+
     public boolean move(Cell source, Cell dest) {
         boolean rst = false;
         int index = this.findBy(source);
@@ -27,11 +35,13 @@ public class Logic {
             Cell[] steps = this.figures[index].way(source, dest);
             if (steps.length > 0 && steps[steps.length - 1].equals(dest)){
                 outerloop:
-                for (int j = 0; j < figures.length; j++) {
+                for (int j = 0; j < this.figures.length; j++) {
                  for(int i = 1; i < steps.length; i++){
-                     if(steps[i] == this.figures[j].position()){
-                         rst = false;
-                         break outerloop;
+                     if(this.figures[j] != null){
+                         if(this.figures[j].position().equals(steps[i])){
+                             rst = false;
+                             break outerloop;
+                         }
                      }
                      rst = true;
                  }
