@@ -21,12 +21,6 @@ public class Logic {
     public void add(Figure figure) {this.figures[this.index++] = figure;
     }
 
-    public static void main(String[] args) {
-        Logic logic = new Logic();
-        logic.add(new BishopBlack(Cell.C1));
-        System.out.println(logic.figures[0]);
-    }
-
 
     public boolean move(Cell source, Cell dest) {
         boolean rst = false;
@@ -34,19 +28,10 @@ public class Logic {
         if (index != -1) {
             Cell[] steps = this.figures[index].way(source, dest);
             if (steps.length > 0 && steps[steps.length - 1].equals(dest)){
-                outerloop:
-                for (int j = 0; j < this.figures.length; j++) {
-                 for(int i = 1; i < steps.length; i++){
-                     if(this.figures[j] != null){
-                         if(this.figures[j].position().equals(steps[i])){
-                             rst = false;
-                             break outerloop;
-                         }
-                     }
-                     rst = true;
-                 }
-             }
-             this.figures[index] = this.figures[index].copy(dest);
+                if (!isWayFree(steps)){
+                    this.figures[index] = this.figures[index].copy(dest);
+                    rst = isWayFree(steps);
+                }
             }
     }
         return rst;
@@ -57,6 +42,18 @@ public class Logic {
             this.figures[position] = null;
         }
         this.index = 0;
+    }
+
+    public boolean isWayFree(Cell[] steps){
+        boolean isFree = false;
+        for (int i = 0; i < steps.length; i++) {
+            if (findBy(steps[i]) != -1) {
+                isFree = true;
+                break;
+            }
+        }
+
+        return isFree;
     }
 
     private int findBy(Cell cell) {
