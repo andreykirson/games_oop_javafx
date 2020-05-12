@@ -30,7 +30,7 @@ public class Logic {
             if (steps.length > 0 && steps[steps.length - 1].equals(dest)){
                 if (!isWayFree(steps)){
                     this.figures[index] = this.figures[index].copy(dest);
-                    rst = isWayFree(steps);
+                    rst = true;
                 }
             }
     }
