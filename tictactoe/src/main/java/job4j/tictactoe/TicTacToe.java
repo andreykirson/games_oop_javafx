@@ -15,6 +15,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
+//
 
 public class TicTacToe extends Application {
     private static final String JOB4J = "Крестики-нолики www.job4j.ru";

@@ -1,5 +1,6 @@
 package job4j.tictactoe;
 
+//
 import javafx.scene.shape.Rectangle;
 
 public class Figure3T extends Rectangle {

@@ -19,7 +19,6 @@ public class Logic3TTest {
         assertThat(login.isWinnerX(), is(true));
     }
 
-
     @Test
     public void whenNotFill() {
         Figure3T[][] table = {
@@ -64,7 +63,7 @@ public class Logic3TTest {
         Logic3T login = new Logic3T(table);
         assertThat(login.isWinnerX(), is(true));
     }
-
+//
     @Test
     public void whenHasOWinner() {
         Figure3T[][] table = {

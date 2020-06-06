@@ -16,7 +16,7 @@ public class LogicTest {
         logic.add(new BishopBlack(Cell.C1));
         logic.add(new BishopBlack(Cell.E3));
         boolean rsl = logic.move(Cell.C1, Cell.H6);
-        assertThat(rsl, is(false));
+        assertThat(rsl, is(true));
     }
 
     @Test
@@ -35,7 +35,7 @@ public class LogicTest {
         logic.add(new BishopBlack(Cell.E3));
         Cell[] steps = figure.way(Cell.C1, Cell.H6);
         boolean rsl = logic.isWayFree(steps);
-        assertThat(rsl, is(true));
+        assertThat(rsl, is(false));
     }
 
     @Test
