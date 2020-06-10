@@ -2,6 +2,10 @@ package job4j.tictactoe;
 
 import org.junit.Ignore;
 import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.List;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -84,5 +88,6 @@ public class Logic3TTest {
         };
         Logic3T login = new Logic3T(table);
         assertThat(login.hasGap(), is(true));
+
     }
 }
